@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 
 interface Message {
   id: string;
@@ -112,7 +113,15 @@ export default function ChatInterface() {
   return (
     <div className="flex flex-col h-screen max-w-4xl mx-auto px-4">
       <header className="py-4 border-b">
-        <h1 className="text-2xl font-bold text-center">Environmental Law Assistant</h1>
+        <div className="flex justify-between items-center">
+          <h1 className="text-2xl font-bold">中环瑞蓝环保小助手</h1>
+          <Link
+            href="/best-practices"
+            className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
+          >
+            最佳实践
+          </Link>
+        </div>
       </header>
 
       <div className="flex-1 overflow-y-auto py-4 space-y-4">
@@ -156,7 +165,7 @@ export default function ChatInterface() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Type your message..."
+            placeholder="请输入您的问题..."
             className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             disabled={isLoading}
           />
@@ -165,7 +174,7 @@ export default function ChatInterface() {
             disabled={isLoading}
             className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 disabled:opacity-50"
           >
-            {isLoading ? 'Sending...' : 'Send'}
+            {isLoading ? '回答中...' : '发送'}
           </button>
         </div>
       </form>

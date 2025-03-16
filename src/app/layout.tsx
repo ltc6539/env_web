@@ -5,8 +5,8 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Environmental Law Assistant',
-  description: 'AI-powered assistant for environmental law consultation',
+  title: '环保法律问答小助手',
+  description: 'AI赋能的环保问答咨询助手',
 };
 
 export default function RootLayout({

@@ -1,0 +1,10 @@
+langchain
+dotenv
+jieba
+pydantic
+fastapi
+FlagEmbedding
+langchain_community
+langchain_chroma
+zhipuai
+rank_bm25
