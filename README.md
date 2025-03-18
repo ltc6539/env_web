@@ -7,7 +7,7 @@
 ## 技术栈
 - **前端/接口框架**：Next.js（TypeScript）
 - **Python后端**：FastAPI （RAG服务）
-- **语言模型服务**：DeepSeek API（SiliconFlow接口）
+- **大语言模型**：DeepSeek API（SiliconFlow接口）
 - **数据库与检索**：Chroma向量数据库、BM25 Retriever、Semantic Retriever
 - **嵌入模型**：ZhipuAI/embedding-3
 - **重排序模型**：BAAI/bge-reranker-v2-m3
@@ -23,7 +23,7 @@
 |        |   └── page.tsx         # 最佳实践界面
 │        ├── page.tsx             # 聊天界面
 │        └── layout.tsx           # 布局界面
-├── rag_service.py                # python-rag逻辑 通过FASTAPI传递文本
+├── rag_service.py                # 基于python实现的rag逻辑
 ├── data
 │    └── vector                   # 向量数据库
 ├── API_KEY.env                   # python 环境变量
@@ -31,7 +31,7 @@
 ├── requirements.txt              # python 依赖管理
 ├── package.json                  # nextjs 依赖管理 
 └── README.md                     # README
-
+```
 ## 本地开发与运行
 
 ### 步骤1：克隆项目
@@ -50,19 +50,23 @@ ZHIPU_KEY=你的智谱API密钥
 **创建`.env.local`文件**
 ```bash
 SILICONFLOW_API_KEY=你的硅基流动密钥
-RAG_SERVICE_URL=http://localhost:8001/retrieve （云端服务器需要要部署为http:/<内网IP>:8001/retrieve）
+RAG_SERVICE_URL=http://localhost:8001/retrieve （云端服务器需要要部署为http:/0.0.0.0:8001/retrieve）
 ```
 
 ### 步骤3：启动Python后端（RAG服务）
-
+新建并激活Python虚拟环境：
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
 安装Python依赖：
 ```bash
 pip install -r requirements.txt
 ```
 
-- 启动Python RAG服务：
+启动Python RAG服务：
 ```bash
-nohup python3 rag_service.py &
+nohup python rag_service.py &
 ```
 确保RAG服务已在`http://0.0.0.0:8001/retrieve`正常启动。
 
@@ -73,16 +77,15 @@ nohup python3 rag_service.py &
 pnpm install
 ```
 
-启动开发服务器：
+继续开发Next.js：
 ```bash
 pnpm dev --port 5005
 ```
 
-- 部署Next.js服务：
+部署Next.js：
 ```bash
-pnpm install
 pnpm build
-pnpm start
+nohup pnpm start -- -p 5005 &
 ```
 
 访问 [http://localhost:5005](http://localhost:3000)
