@@ -23,11 +23,11 @@
 |        |   └── page.tsx         # 最佳实践界面
 │        ├── page.tsx             # 聊天界面
 │        └── layout.tsx           # 布局界面
+├── rag_service.py                # python-rag逻辑 通过FASTAPI传递文本
 ├── data
 │    └── vector                   # 向量数据库
 ├── API_KEY.env                   # python 环境变量
 ├── .env.local                    # nextjs 环境变量
-├── rag_service.py                # python-rag逻辑 通过FASTAPI传递文本
 ├── requirements.txt              # python 依赖管理
 ├── package.json                  # nextjs 依赖管理 
 └── README.md                     # README
